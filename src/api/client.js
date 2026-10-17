@@ -14,7 +14,13 @@ api.interceptors.request.use((config) => {
 });
 
 export function errorMessage(err) {
-  return err.response?.data?.error || err.message || 'Something went wrong';
+  const data = err.response?.data;
+  const detail = typeof data === 'string' ? data : data?.error ?? data?.message;
+
+  if (typeof detail === 'string' && detail) return detail;
+  if (typeof detail?.message === 'string' && detail.message) return detail.message;
+
+  return err.message || 'Something went wrong';
 }
 
 export default api;
