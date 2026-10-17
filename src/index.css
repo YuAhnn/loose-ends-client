@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "JetBrains Mono";
+
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-veil: var(--veil);
+}
+
+:root {
+  --ink: #0a0a0a;
+  --paper: #ffffff;
+  --veil: rgba(10, 10, 10, 0.4);
+
+  color-scheme: light;
+}
+
+.dark {
+  --ink: #f4f4f2;
+  --paper: #0b0b0a;
+  --veil: rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
+}
